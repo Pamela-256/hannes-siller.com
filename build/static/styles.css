@@ -6,8 +6,6 @@ body {
     margin: 0;
 	padding: 0;
 	text-align: left;
-}
-{
 	width: 900 px;
 	margin: 0px;
 	border: 0px solid #000000;
@@ -35,6 +33,37 @@ body a {
 .image {
 	width: 950px;
 }
+
+/* The container for your gallery */
+.gallery {
+    column-count: 3; /* Number of columns */
+    column-gap: 15px; /* Space between columns */
+    padding: 15px;
+}
+
+
+/* Individual photo items */
+.gallery a {
+    display: inline-block;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.gallery img {
+    width: 100%;
+    height: auto; /* Maintains original aspect ratio */
+    display: block;
+    border-radius: 4px;
+    transition: transform 0.3s ease;
+}
+
+.gallery img:hover {
+    transform: scale(1.02); /* Slight zoom on hover */
+}
+
+/* Responsive adjustment for tablets/phones */
+@media (max-width: 900px) { .gallery { column-count: 2; } }
+@media (max-width: 600px) { .gallery { column-count: 1; } }
 
 a:link{
 	color:#0FF;
