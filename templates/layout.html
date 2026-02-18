@@ -6,6 +6,8 @@
     <title>Hannes Siller | Photography</title>
     <!-- Your CSS link -->
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <!-- CSS for the Lightbox -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.12.0/baguetteBox.css">
 </head>
 <body>
     <header>
@@ -22,5 +24,19 @@
     <footer>
         <p>&copy; 2026 Hannes Siller</p>
     </footer>
+    <!-- Lightbox Javascript Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.12.0/baguetteBox.min.js"></script>
+
+    <!-- Initiate the Lightbox -->
+    <script>
+      // This waits until the page is fully loaded to activate the gallery
+      window.addEventListener('load', function() {
+        baguetteBox.run('.gallery', {
+            animation: 'fadeIn',
+            noScrollbars: true,
+            buttons: true // Shows the 'Next' and 'Previous' arrows
+        });
+      });
+    </script>
 </body>
 </html>
