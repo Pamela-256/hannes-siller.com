@@ -1,6 +1,9 @@
-<h1>Photography Portfolio</h1>
+{% extends "layout.html" %}
+
+{% block content %}
 <ul>
     {% for p in projects %}
     <li><a href="{{ url_for('project', name=p) }}">{{ p }}</a></li>
     {% endfor %}
 </ul>
+{% endblock %}

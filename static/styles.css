@@ -1,0 +1,61 @@
+body {
+	font: 100% Verdana, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	background-color: #222;
+	color: #fff;
+    margin: 0;
+	padding: 0;
+	text-align: left;
+}
+{
+	width: 900 px;
+	margin: 0px;
+	border: 0px solid #000000;
+	text-align: left;
+}
+h1, h2, h3, h4, h5{
+    text-transform: uppercase;
+    opacity: 0.5;
+    font-weight: bold;
+	color:#FFF;
+}
+h2 {
+	font-size: 48px;
+}
+body a {
+	text-decoration: none;
+}
+#layout {
+	width: 950px;
+	margin-left: auto;
+	margin-right: auto;
+	border:0;
+}
+
+.image {
+	width: 950px;
+}
+
+a:link{
+	color:#0FF;
+}
+a:visited{
+	color:#FF0;
+}
+a:hover{
+	color:#0F0;
+
+background:#666;
+
+}
+a:active{
+	color:#0F0;
+}
+
+h2{
+     font-size: 48px;
+}
+
+#nav{
+    margin-top:40px;
+}

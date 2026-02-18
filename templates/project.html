@@ -1,3 +1,7 @@
+
+{% extends "layout.html" %}
+
+{% block content %}
 <h1>Project: {{ name }}</h1>
 <a href="{{ url_for('index') }}">Back Home</a>
 <div>
@@ -5,3 +9,5 @@
     <img src="{{ url_for('static', filename='projects/' + name + '/' + img) }}" width="400">
     {% endfor %}
 </div>
+
+{% endblock %}
