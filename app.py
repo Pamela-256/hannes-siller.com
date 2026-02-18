@@ -1,6 +1,5 @@
 import os
 import json
-
 from flask import Flask, render_template
 
 app = Flask(__name__)
@@ -17,21 +16,37 @@ def index():
 @app.route('/project/<name>/')
 def project(name):
     # Find all images in the specific folder
-    path = os.path.join(PROJECTS_DIR, name)
-    json_path = os.path.join(path, 'info.json')
+    project_path = os.path.join(PROJECTS_DIR, name)
+    json_path = os.path.join(project_path, 'info.json')
 
-    if os.path.exists(json_path):
-        with open(json_path, 'r') as f:
-            data = json.load(f)
-            images = data['order'] # Uses your custom order
-            title = data.get('title', name)
-    else:
-        images = [f for f in os.listdir(path) if f.lower().endswith(('.jpg', '.jpeg', '.png'))]
-
-        # sort images from 0-9 and then A-Z
-        images.sort() 
+    # 1. Check if info.json exists
+    if not os.path.exists(json_path):
+        # 2. Generate standard alphabetical list of images
+        images = [f for f in os.listdir(project_path) 
+                  if f.lower().endswith(('.jpg', '.jpeg', '.png'))]
+        images.sort() # Standard alphabetical sorting
         
-    return render_template('project.html', name=name, images=images)
+        # 3. Create the data structure
+        new_data = {
+            "title": name.replace('-', ' ').title(),
+            "order": images,
+            "description": ""
+        }
+        
+        # 4. Save to file so you can edit it later in VS Code
+        with open(json_path, 'w', encoding='utf-8') as f:
+            json.dump(new_data, f, indent=4)
+        
+        print(f"Generated new info.json for: {name}")
+
+    # 5. Now load the data (either the one just made or the existing one)
+    with open(json_path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+
+    return render_template('project.html', 
+                           name=data.get('title', name), 
+                           images=data.get('order', []),
+                           description=data.get('description', ''))
 
 if __name__ == '__main__':
     app.run(debug=True)
