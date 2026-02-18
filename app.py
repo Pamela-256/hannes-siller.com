@@ -18,35 +18,41 @@ def project(name):
     # Find all images in the specific folder
     project_path = os.path.join(PROJECTS_DIR, name)
     json_path = os.path.join(project_path, 'info.json')
-# 1. Get all actual image files currently in the folder
-    current_files = [f for f in os.listdir(project_path) 
+    
+    # 1. Get physical files currently in the folder
+    files_on_disk = [f for f in os.listdir(project_path) 
                      if f.lower().endswith(('.jpg', '.jpeg', '.png', '.webp'))]
-    current_files.sort()
 
-    # 2. Check if info.json exists
     if os.path.exists(json_path):
         with open(json_path, 'r', encoding='utf-8') as f:
             data = json.load(f)
         
-        # Sync: Find files that are in the folder but NOT in the JSON list
-        existing_order = data.get('order', [])
-        new_files = [f for f in current_files if f not in existing_order]
+        # 2. REMOVE: Filter out filenames from JSON that no longer exist on disk
+        original_order = data.get('order', [])
+        synced_order = [f for f in original_order if f in files_on_disk]
         
-        if new_files:
-            data['order'] = existing_order + new_files # Append new ones to the end
+        # 3. ADD: Find new files on disk that aren't in the JSON yet
+        new_files = [f for f in files_on_disk if f not in synced_order]
+        new_files.sort() # Sort new additions alphabetically before appending
+        
+        updated_order = synced_order + new_files
+        
+        # 4. SAVE: Only write to disk if something actually changed
+        if updated_order != original_order:
+            data['order'] = updated_order
             with open(json_path, 'w', encoding='utf-8') as f:
                 json.dump(data, f, indent=4)
-            print(f"Updated {name}/info.json with {len(new_files)} new images.")
+            print(f"Sync complete for {name}: Removed {len(original_order) - len(synced_order)}, Added {len(new_files)}.")
     else:
-        # 3. Create new info.json if it doesn't exist (Your previous logic)
+        # 5. CREATE info.json if no info.JSON exists yet
+        files_on_disk.sort()
         data = {
             "title": name.replace('-', ' ').title(),
-            "order": current_files,
-            "description": "Add a project description here."
+            "order": files_on_disk,
+            "description": ""
         }
         with open(json_path, 'w', encoding='utf-8') as f:
             json.dump(data, f, indent=4)
-        print(f"Generated new info.json for: {name}")
 
     return render_template('project.html', 
                            name=data.get('title', name), 
