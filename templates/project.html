@@ -6,11 +6,11 @@
     <a href="{{ url_for('index') }}">Back Home</a>
 
     <div class="gallery">
-        {% for img in images %}
-        <!-- Note the path includes the 'category' variable now -->
+    {% for img in images %}
         <a href="{{ url_for('static', filename='projects/' + category + '/' + name + '/' + img) }}">
-            <img src="{{ url_for('static', filename='projects/' + category + '/' + name + '/' + img) }}" alt="Photography">
+            <img src="{{ url_for('static', filename='projects/' + category + '/' + name + '/' + img) }}" 
+                alt="{{ display_title }}">
         </a>
-        {% endfor %}
-    </div>
+    {% endfor %}
+</div>
 {% endblock %}
