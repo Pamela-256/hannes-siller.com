@@ -11,19 +11,132 @@
 </head>
 <body>
     <header>
-        <nav>
-            <a href="/">Hannes Siller</a>
-            <!-- You can add more links here later -->
-        </nav>
+    <nav class="main-nav">
+        <ul>
+            <li><a href="/">Home</a></li>
+            
+                <li class="nav-category">
+                    <!-- Just the title, no description -->
+                    <strong>Photography</strong>
+                    
+                    <ul class="sub-nav">
+                        
+                            <li>
+                                <a href="/Photography/Gallery%20Hoffmann/">
+                                    Gallery Hoffmann
+                                </a>
+                                <!-- Removed the 'p.desc' here -->
+                            </li>
+                        
+                            <li>
+                                <a href="/Photography/ADAC/">
+                                    Adac
+                                </a>
+                                <!-- Removed the 'p.desc' here -->
+                            </li>
+                        
+                            <li>
+                                <a href="/Photography/Art%20Fairs/">
+                                    Art Fairs
+                                </a>
+                                <!-- Removed the 'p.desc' here -->
+                            </li>
+                        
+                            <li>
+                                <a href="/Photography/Luminale/">
+                                    Luminale
+                                </a>
+                                <!-- Removed the 'p.desc' here -->
+                            </li>
+                        
+                            <li>
+                                <a href="/Photography/Nordic%20Game%20Convention/">
+                                    Nordic Game Convention 2025
+                                </a>
+                                <!-- Removed the 'p.desc' here -->
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+                <li class="nav-category">
+                    <!-- Just the title, no description -->
+                    <strong>Cinematography</strong>
+                    
+                    <ul class="sub-nav">
+                        
+                            <li>
+                                <a href="/Cinematography/Schweden/">
+                                    Schweden
+                                </a>
+                                <!-- Removed the 'p.desc' here -->
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+                <li class="nav-category">
+                    <!-- Just the title, no description -->
+                    <strong>Motion Design</strong>
+                    
+                    <ul class="sub-nav">
+                        
+                            <li>
+                                <a href="/Motion-Design/GWA/">
+                                    Gwa
+                                </a>
+                                <!-- Removed the 'p.desc' here -->
+                            </li>
+                        
+                            <li>
+                                <a href="/Motion-Design/Muesli/">
+                                    Muesli
+                                </a>
+                                <!-- Removed the 'p.desc' here -->
+                            </li>
+                        
+                            <li>
+                                <a href="/Motion-Design/Showreel/">
+                                    Showreel
+                                </a>
+                                <!-- Removed the 'p.desc' here -->
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+                <li class="nav-category">
+                    <!-- Just the title, no description -->
+                    <strong>Art Projects</strong>
+                    
+                    <ul class="sub-nav">
+                        
+                            <li>
+                                <a href="/Art-Projects/Robodraw/">
+                                    Robodraw
+                                </a>
+                                <!-- Removed the 'p.desc' here -->
+                            </li>
+                        
+                            <li>
+                                <a href="/Art-Projects/Robodraw-Exhibition/">
+                                    Robodraw Exhibition
+                                </a>
+                                <!-- Removed the 'p.desc' here -->
+                            </li>
+                        
+                    </ul>
+                </li>
+            
+        </ul>
+    </nav>
+
+
     </header>
 
     <main>
         
 <ul>
-    
-    <li><a href="/project/Gallery%20Hoffmann/">Gallery Hoffmann</a></li>
-    
-    <li><a href="/project/Nordic%20Game%20Convention%202025/">Nordic Game Convention 2025</a></li>
     
 </ul>
 
@@ -41,6 +154,7 @@
       window.addEventListener('load', function() {
         baguetteBox.run('.gallery', {
             animation: 'fadeIn',
+            overlayBackgroundColor: 'rgba(0,0,0,1)',
             noScrollbars: true,
             buttons: true // Shows the 'Next' and 'Previous' arrows
         });

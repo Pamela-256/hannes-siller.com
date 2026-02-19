@@ -33,17 +33,6 @@ body a {
 .image {
 	width: 950px;
 }
-.nav-category { margin-bottom: 1.5rem; }
-.category-header strong { text-transform: uppercase; letter-spacing: 1px; }
-.nav-desc { font-size: 0.85rem; color: #666; font-style: italic; }
-
-.sub-nav { list-style: none; padding-left: 15px; margin-top: 5px; }
-.sub-nav li { margin-bottom: 8px; }
-.project-nav-desc { display: block; color: #888; font-size: 0.75rem; line-height: 1.2; }
-
-/* Optional: Only show project descriptions on hover to save space */
-.project-nav-desc { opacity: 0; transition: opacity 0.2s; }
-li:hover > .project-nav-desc { opacity: 1; }
 
 /* The container for your gallery */
 .gallery {

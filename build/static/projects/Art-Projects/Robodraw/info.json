@@ -1,0 +1,18 @@
+{
+    "title": "Robodraw",
+    "order": [
+        "2022-02-03-Robodraw-0320.jpg",
+        "2022-02-03-Robodraw-0330.jpg",
+        "2022-02-03-Robodraw-0440.jpg",
+        "2022-02-03-Robodraw-0490.jpg",
+        "2022-02-03-Robodraw-0500.jpg",
+        "2022-02-03-Robodraw-0510.jpg",
+        "2022-02-03-Robodraw-0550.jpg",
+        "2022-02-03-Robodraw-0590.jpg",
+        "2022-02-03-Robodraw-0630.jpg",
+        "2022-02-03-Robodraw-0640.jpg",
+        "2022-02-03-Robodraw-0660.jpg",
+        "2022-02-03-Robodraw-0670.jpg"
+    ],
+    "description": "The robots are battery-operated, autonomously moving vehicles, each measuring 22x15x15 cm. They are equipped with ultrasonic sensors that allow them to perceive distances. <BR> The robots operate based on simple predefined rules: 'Move forward until an obstacle appears, then try evade it at a defined angle in the direction where the obstacle can be bypassed most quickly.' The robots move on a 80 x 120 cm sheet of paper (approximately equivalent to DIN A0). The paper is placed on a table with 20 cm-high walls along its edges, allowing the robots to recognize the boundaries of their operating area."
+}
