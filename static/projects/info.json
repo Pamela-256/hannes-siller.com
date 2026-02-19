@@ -1,9 +1,11 @@
 {
     "category_order": [
+        "Home",
         "Photography",
         "Cinematography",
         "Motion-Design",
-        "Art-Projects"
+        "Art-Projects",
+        "Impressum"
     ],
     "description": "Main Portfolio Structure"
 }

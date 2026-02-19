@@ -13,57 +13,77 @@ def get_portfolio_data():
         os.makedirs(PROJECTS_DIR, exist_ok=True)
         return structure
 
-    # 1. MASTER LEVEL: Sort Categories (Photography, etc.)
+    # 1. MASTER LEVEL: Sync Categories (Photography, Home, etc.)
     master_json_path = os.path.join(PROJECTS_DIR, 'info.json')
-    all_cats = sorted([d for d in os.listdir(PROJECTS_DIR) if os.path.isdir(os.path.join(PROJECTS_DIR, d))])
+    all_cats_on_disk = sorted([d for d in os.listdir(PROJECTS_DIR) if os.path.isdir(os.path.join(PROJECTS_DIR, d))])
     
+    # Create master JSON if missing
     if not os.path.exists(master_json_path):
+        m_data = {"category_order": all_cats_on_disk, "description": "Main Portfolio"}
         with open(master_json_path, 'w', encoding='utf-8') as f:
-            json.dump({"category_order": all_cats, "description": "Main Portfolio"}, f, indent=4)
+            json.dump(m_data, f, indent=4)
     
     with open(master_json_path, 'r', encoding='utf-8') as f:
         m_data = json.load(f)
-        m_order = m_data.get('category_order', [])
-        categories = [c for c in m_order if c in all_cats] + [c for c in all_cats if c not in m_order]
+    
+    # SYNC MASTER: Add new folders (like "Home") to the JSON automatically
+    cur_m_order = m_data.get('category_order', [])
+    synced_cats = [c for c in cur_m_order if c in all_cats_on_disk]
+    new_cats = [c for c in all_cats_on_disk if c not in synced_cats]
+    final_m_order = synced_cats + new_cats
+
+    if final_m_order != cur_m_order:
+        m_data['category_order'] = final_m_order
+        with open(master_json_path, 'w', encoding='utf-8') as f:
+            json.dump(m_data, f, indent=4)
 
     # 2. CATEGORY LEVEL: Sort Projects within Categories
-    for cat in categories:
+    for cat in final_m_order:
         cat_path = os.path.join(PROJECTS_DIR, cat)
         cat_json_path = os.path.join(cat_path, 'info.json')
-        all_projs = sorted([p for p in os.listdir(cat_path) if os.path.isdir(os.path.join(cat_path, p))])
+        all_projs_on_disk = sorted([p for p in os.listdir(cat_path) if os.path.isdir(os.path.join(cat_path, p))])
         
+        # Ensure Category info.json exists
         if not os.path.exists(cat_json_path):
+            c_init = {"title": cat.replace('-', ' ').title(), "description": "", "project_order": all_projs_on_disk}
             with open(cat_json_path, 'w', encoding='utf-8') as f:
-                json.dump({"title": cat.replace('-', ' ').title(), "description": "", "project_order": all_projs}, f, indent=4)
+                json.dump(c_init, f, indent=4)
         
         with open(cat_json_path, 'r', encoding='utf-8') as f:
             c_data = json.load(f)
-            p_order = c_data.get('project_order', [])
-            projects = [p for p in p_order if p in all_projs] + [p for p in all_projs if p not in p_order]
+            
+        # SYNC CATEGORY: Add new project folders to the project_order
+        cur_p_order = c_data.get('project_order', [])
+        synced_projs = [p for p in cur_p_order if p in all_projs_on_disk]
+        new_projs = [p for p in all_projs_on_disk if p not in synced_projs]
+        final_p_order = synced_projs + new_projs
+        
+        if final_p_order != cur_p_order:
+            c_data['project_order'] = final_p_order
+            with open(cat_json_path, 'w', encoding='utf-8') as f:
+                json.dump(c_data, f, indent=4)
             
         project_details = []
-        for p in projects:
+        for p in final_p_order:
             p_path = os.path.join(cat_path, p)
             p_json = os.path.join(p_path, 'info.json')
             
-            # 3. PROJECT LEVEL: Sort Images within Projects
+            # 3. PROJECT LEVEL: Sync Images
             files_on_disk = sorted([f for f in os.listdir(p_path) if f.lower().endswith(('.jpg', '.jpeg', '.png', '.webp'))])
             
             if not os.path.exists(p_json):
-                p_data = {"title": p.replace('-', ' ').title(), "description": "", "order": files_on_disk}
+                p_init = {"title": p.replace('-', ' ').title(), "description": "", "order": files_on_disk}
                 with open(p_json, 'w', encoding='utf-8') as f:
-                    json.dump(p_data, f, indent=4)
+                    json.dump(p_init, f, indent=4)
             
             with open(p_json, 'r', encoding='utf-8') as f:
                 p_data = json.load(f)
-                # Sync images (Remove deleted, add new to end)
-                cur_order = p_data.get('order', [])
-                synced = [f for f in cur_order if f in files_on_disk]
-                new_imgs = [f for f in files_on_disk if f not in synced]
-                p_data['order'] = synced + new_imgs
+                cur_img_order = p_data.get('order', [])
+                synced_imgs = [f for f in cur_img_order if f in files_on_disk]
+                new_imgs = [f for f in files_on_disk if f not in synced_imgs]
+                p_data['order'] = synced_imgs + new_imgs
                 
-                # Save sync if changed
-                if p_data['order'] != cur_order:
+                if p_data['order'] != cur_img_order:
                     with open(p_json, 'w', encoding='utf-8') as f:
                         json.dump(p_data, f, indent=4)
             
@@ -91,7 +111,6 @@ def project_page(category, project_name):
     project_path = os.path.join(PROJECTS_DIR, category, project_name)
     json_path = os.path.join(project_path, 'info.json')
     
-    # Final data load for the specific page
     with open(json_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
