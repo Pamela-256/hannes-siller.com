@@ -83,7 +83,7 @@ def get_portfolio_data():
 @app.route('/')
 def index():
     nav_data = get_portfolio_data()
-    return render_template('index.html', nav=nav_data)
+    return render_template('index.html', nav=nav_data, active_category=None)
 
 @app.route('/<category>/<project_name>/')
 def project_page(category, project_name):
@@ -97,7 +97,8 @@ def project_page(category, project_name):
 
     return render_template('project.html', 
                            nav=nav_data, 
-                           category=category, 
+                           category=category,
+                           active_category=category,
                            name=project_name, 
                            display_title=data.get('title'),
                            images=data.get('order', []),
