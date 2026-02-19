@@ -178,3 +178,28 @@ a:active { color: #0F0; }
 @media (max-width: 600px) {
     .gallery { column-count: 1; }
 }
+/* Custom Fullscreen Button for Lightbox */
+#custom-fs-button {
+    position: fixed;
+    top: 20px;
+    right: 70px; /* Space it away from the 'Close' button */
+    background: rgba(0, 0, 0, 0.5);
+    color: #0FF;
+    border: 1px solid #0FF;
+    border-radius: 4px;
+    font-size: 24px;
+    padding: 5px 12px;
+    cursor: pointer;
+    z-index: 99999;
+    transition: all 0.3s ease;
+}
+
+#custom-fs-button:hover {
+    background: #0FF;
+    color: #000;
+}
+
+/* Hide button when lightbox is not visible */
+#baguetteBox-overlay[style*="display: none"] #custom-fs-button {
+    display: none;
+}

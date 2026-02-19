@@ -61,44 +61,42 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.12.0/baguetteBox.min.js"></script>
 
     <script>
-        // 1. Toggle Sub-Menus on Click (Software Style)
-        function toggleDropdown(event, element) {
-            event.stopPropagation();
-            const parent = element.parentElement;
-            const isOpen = parent.classList.contains('open');
-            
-            // Close all other open menus
-            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('open'));
-            
-            // Toggle current
-            if (!isOpen) {
-                parent.classList.add('open');
-            }
-        }
-
-        // 2. Global Click Listener to close menus when clicking outside
-        window.onclick = function(event) {
-            if (!event.target.matches('.cat-link')) {
-                document.querySelectorAll('.nav-item').forEach(item => {
-                    item.classList.remove('open');
-                });
-            }
-        }
-
-        // 3. Mobile Hamburger Toggle
-        function toggleMobileMenu() {
-            document.getElementById("nav-list").classList.toggle("show");
-        }
-
-        // 4. Initialize Lightbox
-        window.addEventListener('load', function() {
-            baguetteBox.run('.gallery', {
-                animation: 'fadeIn',
-                overlayBackgroundColor: 'rgba(0,0,0,0.95)',
-                noScrollbars: true,
-                buttons: true
-            });
+    // 1. Initialize the Lightbox
+    window.addEventListener('load', function() {
+        baguetteBox.run('.gallery', {
+            animation: 'fadeIn',
+            overlayBackgroundColor: 'rgba(0,0,0,0.98)',
+            buttons: true
         });
-    </script>
+
+        // 2. Inject the Fullscreen Button into the baguetteBox overlay
+        const overlay = document.getElementById('baguetteBox-overlay');
+        if (overlay) {
+            const fsBtn = document.createElement('button');
+            fsBtn.id = 'custom-fs-button';
+            fsBtn.innerHTML = '⛶'; // Fullscreen symbol
+            fsBtn.title = 'Toggle Fullscreen';
+            overlay.appendChild(fsBtn);
+
+            fsBtn.addEventListener('click', function(e) {
+                e.stopPropagation(); // Don't close the lightbox when clicking the button
+                toggleFullScreen();
+            });
+        }
+    });
+
+    // 3. The Fullscreen Logic
+    function toggleFullScreen() {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen().catch(err => {
+                console.error(`Error attempting to enable full-screen mode: ${err.message}`);
+            });
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            }
+        }
+    }
+</script>
 </body>
 </html>
