@@ -61,7 +61,7 @@ def project_page(category, project_name):
             with open(json_path, 'w', encoding='utf-8') as f:
                 json.dump(data, f, indent=4)
     else:
-        data = {"title": project_name.replace('-', ' ').title(), "order": sorted(files_on_disk)}
+        data = {"title": project_name.replace('-', ' ').title(), "order": sorted(files_on_disk), "description": ""}
         with open(json_path, 'w', encoding='utf-8') as f:
             json.dump(data, f, indent=4)
 
@@ -70,7 +70,8 @@ def project_page(category, project_name):
                            category=category, 
                            name=project_name, 
                            display_title=data.get('title'),
-                           images=data.get('order', []))
+                           images=data.get('order', []),
+                           description=data.get('description', ''))
 
 if __name__ == '__main__':
     app.run(debug=True)
