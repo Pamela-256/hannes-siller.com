@@ -18,7 +18,7 @@
         <ul class="nav-list" id="nav-list">
             {% for cat_slug, cat_info in nav.items() %}
             <li class="nav-item {% if active_category == cat_slug %}active{% endif %}">
-                <a href="#" class="cat-link">{{ cat_info.display_name }} ▾</a>
+                <a href="#" class="cat-link">{{ cat_info.display_name }} </a>
                 
                 <ul class="dropdown">
                     {% for p in cat_info.projects %}
