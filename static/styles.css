@@ -1,90 +1,44 @@
+/* --- RESET & LAYOUT --- */
 body {
-	font: 100% Verdana, Arial, Helvetica, sans-serif;
-	font-size: 14px;
-	background-color: #222;
-	color: #fff;
+    font: 100% Verdana, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    background-color: #222;
+    color: #fff;
     margin: 0;
-	padding: 0;
-	text-align: left;
-	width: 900 px;
-	margin: 0px;
-	border: 0px solid #000000;
-	text-align: left;
+    padding: 0;
+    text-align: left;
 }
-h1, h2, h3, h4, h5{
+
+#layout {
+    max-width: 950px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* --- TYPOGRAPHY --- */
+h1, h2, h3, h4, h5 {
     text-transform: uppercase;
     opacity: 0.5;
     font-weight: bold;
-	color:#FFF;
+    color: #FFF;
+    margin-top: 0;
 }
+
 h2 {
-	font-size: 48px;
-}
-body a {
-	text-decoration: none;
-}
-#layout {
-	width: 950px;
-	margin-left: auto;
-	margin-right: auto;
-	border:0;
+    font-size: 48px;
 }
 
-.image {
-	width: 950px;
+a {
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
-/* The container for your gallery */
-.gallery {
-    column-count: 3; /* Number of columns */
-    column-gap: 15px; /* Space between columns */
-    padding: 15px;
-}
+a:link { color: #0FF; }
+a:visited { color: #FF0; }
+a:hover { color: #0F0; }
+a:active { color: #0F0; }
 
-
-/* Individual photo items */
-.gallery a {
-    display: inline-block;
-    margin-bottom: 15px;
-    width: 100%;
-}
-
-.gallery img {
-    width: 100%;
-    height: auto; /* Maintains original aspect ratio */
-    display: block;
-    border-radius: 4px;
-    transition: transform 0.3s ease;
-}
-
-.gallery img:hover {
-    transform: scale(1.02); /* Slight zoom on hover */
-}
-
-/* Responsive adjustment for tablets/phones */
-@media (max-width: 900px) { .gallery { column-count: 2; } }
-@media (max-width: 600px) { .gallery { column-count: 1; } }
-
-a:link{
-	color:#0FF;
-}
-a:visited{
-	color:#FF0;
-}
-a:hover{
-	color:#0F0;
-
-background:#666;
-
-}
-a:active{
-	color:#0F0;
-}
-
-h2{
-     font-size: 48px;
-}
-/* Horizontal Nav */
+/* --- NAVIGATION BAR --- */
 .main-nav {
     background: #111;
     border-bottom: 1px solid #333;
@@ -96,12 +50,11 @@ h2{
     display: flex;
     list-style: none;
     margin: 0;
-    padding: 0;
+    padding: 0; /* Aligned to far left */
 }
 
-/* Category Item */
 .nav-item {
-    position: relative; /* Essential for dropdown positioning */
+    position: relative;
 }
 
 .cat-link {
@@ -110,58 +63,118 @@ h2{
     color: #FFF;
     opacity: 0.7;
     font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
 }
 
-.nav-item:hover .cat-link { opacity: 1; color: #0FF; background: #333; }
+/* Software Style Active/Open states */
+.cat-link.active-cat, 
+.nav-item.open .cat-link {
+    color: #0FF;
+    opacity: 1;
+    background: #333;
+}
 
-/* The Dropdown Menu (Hidden by default) */
+/* --- DROPDOWN MENU --- */
 .dropdown {
-    display: none;
+    display: none; /* Hidden until .open class is added via JS */
     position: absolute;
     top: 100%;
     left: 0;
     background: #333;
-    min-width: 200px;
+    min-width: 220px;
     list-style: none;
+    margin: 0;
     padding: 10px 0;
     box-shadow: 0px 8px 16px rgba(0,0,0,0.5);
+    border-top: 2px solid #0FF;
+}
+
+.nav-item.open .dropdown {
+    display: block;
 }
 
 .dropdown li a {
-    padding: 10px 20px;
     display: block;
+    padding: 10px 20px; /* Perfectly aligned with cat-link text */
     color: #FFF;
+    white-space: nowrap;
 }
 
-.dropdown li a:hover { background: #444; color: #0F0; }
+.dropdown li a:hover {
+    background: #444;
+    color: #0F0;
+}
 
-/* Show dropdown on hover */
-.nav-item:hover .dropdown { display: block; }
+.dropdown li a.current-proj {
+    color: #0F0;
+    font-weight: bold;
+}
 
-/* Responsive "Menu" Button Logic */
-.menu-toggle { display: none; }
+/* --- GALLERY (Masonry) --- */
+.gallery {
+    column-count: 3;
+    column-gap: 15px;
+    padding-top: 30px;
+}
+
+.gallery a {
+    display: inline-block;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.gallery img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+    transition: transform 0.3s ease;
+}
+
+.gallery img:hover {
+    transform: scale(1.02);
+}
+
+/* --- RESPONSIVE / MOBILE --- */
+.menu-toggle {
+    display: none;
+    background: #0FF;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+}
+
+@media (max-width: 900px) {
+    .gallery { column-count: 2; }
+}
 
 @media (max-width: 768px) {
-    .menu-toggle {
-        display: block;
-        background: #0FF;
-        color: #000;
-        border: none;
-        padding: 10px 20px;
-        font-weight: bold;
-        cursor: pointer;
-    }
+    .menu-toggle { display: block; }
     
     .nav-list {
-        display: none; /* Hide full list on mobile */
+        display: none;
         flex-direction: column;
     }
     
-    .nav-list.show { display: flex; }
+    .nav-list.show {
+        display: flex;
+    }
     
-    .dropdown { position: static; } /* Stack dropdowns on mobile */
+    .dropdown {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+        border-left: 3px solid #0FF;
+        border-top: none;
+        background: #282828;
+    }
 }
 
-#nav{
-    margin-top:40px;
+@media (max-width: 600px) {
+    .gallery { column-count: 1; }
 }

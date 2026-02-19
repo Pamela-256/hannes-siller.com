@@ -4,65 +4,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hannes Siller | Photography</title>
-    <!-- Your CSS link -->
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <!-- CSS for the Lightbox -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.12.0/baguetteBox.css">
+    <!-- Lightbox CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com">
 </head>
 <body>
     <header>
-    <nav class="main-nav">
-        <!-- This button only shows up on mobile when space is tight -->
-        <button class="menu-toggle" onclick="toggleMenu()">MENU</button>
-        
-        <ul class="nav-list" id="nav-list">
-            {% for cat_slug, cat_info in nav.items() %}
-            <li class="nav-item {% if active_category == cat_slug %}active{% endif %}">
-                <a href="#" class="cat-link">{{ cat_info.display_name }} </a>
-                
-                <ul class="dropdown">
-                    {% for p in cat_info.projects %}
-                    <li>
-                        <a href="{{ url_for('project_page', category=cat_slug, project_name=p.slug) }}"
-                        class="{% if name == p.slug %}current-proj{% endif %}">
-                            {{ p.title }}
+        <nav class="main-nav">
+            <!-- Mobile Menu Toggle -->
+            <button class="menu-toggle" onclick="toggleMobileMenu()">MENU</button>
+            
+            <ul class="nav-list" id="nav-list">
+                {% for cat_slug, cat_info in nav.items() %}
+                <li class="nav-item">
+                    {# 1. Logic: If projects exist, act as a dropdown toggle. If not, link directly. #}
+                    {% if cat_info.projects %}
+                        <a href="javascript:void(0)" 
+                           class="cat-link {% if active_category == cat_slug %}active-cat{% endif %}" 
+                           onclick="toggleDropdown(event, this)">
+                            {{ cat_info.display_name }}
                         </a>
-                    </li>
-                    {% endfor %}
-                </ul>
-            </li>
-            {% endfor %}
-        </ul>
-    </nav>
-    <script>
-        function toggleMenu() {
-            var x = document.getElementById("nav-list");
-            x.classList.toggle("show");
-        }
-    </script>
+                        <ul class="dropdown">
+                            {% for p in cat_info.projects %}
+                            <li>
+                                <a href="{{ url_for('project_page', category=cat_slug, project_name=p.slug) }}"
+                                   class="{% if name == p.slug %}current-proj{% endif %}">
+                                    {{ p.title }}
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        {# Direct link for categories like "Home" with no sub-folders #}
+                        <a href="{{ url_for('project_page', category=cat_slug) }}" 
+                           class="cat-link {% if active_category == cat_slug %}active-cat{% endif %}">
+                            {{ cat_info.display_name }}
+                        </a>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        </nav>
     </header>
 
     <main>
-        {% block content %}{% endblock %}
+        <div id="layout">
+            {% block content %}{% endblock %}
+        </div>
     </main>
 
     <footer>
         <p>&copy; 2026 Hannes Siller</p>
     </footer>
-    <!-- Lightbox Javascript Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.12.0/baguetteBox.min.js"></script>
 
-    <!-- Initiate the Lightbox -->
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com"></script>
+
     <script>
-      // This waits until the page is fully loaded to activate the gallery
-      window.addEventListener('load', function() {
-        baguetteBox.run('.gallery', {
-            animation: 'fadeIn',
-            overlayBackgroundColor: 'rgba(0,0,0,1)',
-            noScrollbars: true,
-            buttons: true // Shows the 'Next' and 'Previous' arrows
+        // 1. Toggle Sub-Menus on Click (Software Style)
+        function toggleDropdown(event, element) {
+            event.stopPropagation();
+            const parent = element.parentElement;
+            const isOpen = parent.classList.contains('open');
+            
+            // Close all other open menus
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('open'));
+            
+            // Toggle current
+            if (!isOpen) {
+                parent.classList.add('open');
+            }
+        }
+
+        // 2. Global Click Listener to close menus when clicking outside
+        window.onclick = function(event) {
+            if (!event.target.matches('.cat-link')) {
+                document.querySelectorAll('.nav-item').forEach(item => {
+                    item.classList.remove('open');
+                });
+            }
+        }
+
+        // 3. Mobile Hamburger Toggle
+        function toggleMobileMenu() {
+            document.getElementById("nav-list").classList.toggle("show");
+        }
+
+        // 4. Initialize Lightbox
+        window.addEventListener('load', function() {
+            baguetteBox.run('.gallery', {
+                animation: 'fadeIn',
+                overlayBackgroundColor: 'rgba(0,0,0,0.95)',
+                noScrollbars: true,
+                buttons: true
+            });
         });
-      });
     </script>
 </body>
 </html>
