@@ -61,7 +61,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.12.0/baguetteBox.min.js"></script>
 
     <script>
-    // 1. Initialize the Lightbox
     window.addEventListener('load', function() {
         baguetteBox.run('.gallery', {
             animation: 'fadeIn',
@@ -69,34 +68,24 @@
             buttons: true
         });
 
-        // 2. Inject the Fullscreen Button into the baguetteBox overlay
         const overlay = document.getElementById('baguetteBox-overlay');
-        if (overlay) {
+        if (overlay && !document.getElementById('custom-fs-button')) {
             const fsBtn = document.createElement('button');
             fsBtn.id = 'custom-fs-button';
-            fsBtn.innerHTML = '⛶'; // Fullscreen symbol
-            fsBtn.title = 'Toggle Fullscreen';
+            // Using a simple square-in-bracket icon for a "software" look
+            fsBtn.innerHTML = '⛶'; 
             overlay.appendChild(fsBtn);
 
             fsBtn.addEventListener('click', function(e) {
-                e.stopPropagation(); // Don't close the lightbox when clicking the button
-                toggleFullScreen();
+                e.stopPropagation();
+                if (!document.fullscreenElement) {
+                    document.documentElement.requestFullscreen();
+                } else {
+                    document.exitFullscreen();
+                }
             });
         }
     });
-
-    // 3. The Fullscreen Logic
-    function toggleFullScreen() {
-        if (!document.fullscreenElement) {
-            document.documentElement.requestFullscreen().catch(err => {
-                console.error(`Error attempting to enable full-screen mode: ${err.message}`);
-            });
-        } else {
-            if (document.exitFullscreen) {
-                document.exitFullscreen();
-            }
-        }
-    }
 </script>
 </body>
 </html>
