@@ -12,42 +12,34 @@
 <body>
     <header>
     <nav class="main-nav">
-<ul style="display: flex; flex-wrap: wrap; gap: 40px; list-style: none; padding: 0;">
-    {% for cat_slug, cat_info in nav.items() %}
-    <li class="nav-category">
+        <!-- This button only shows up on mobile when space is tight -->
+        <button class="menu-toggle" onclick="toggleMenu()">MENU</button>
         
-        <!-- Category: Cyan (#0FF) if active, else White (#FFF) with 0.5 opacity -->
-        {% if cat_info.projects %}
-            <!-- Links to the first project in the list -->
-            <a href="{{ url_for('project_page', category=cat_slug, project_name=cat_info.projects[0].slug) }}" 
-               style="text-decoration:none;">
-                <strong style="{% if active_category == cat_slug %}color:#0FF; opacity:1;{% else %}color:#FFF; opacity:0.5;{% endif %} transition: color 0.3s;">
-                    {{ cat_info.display_name }}
-                </strong>
-            </a>
-        {% endif %}
-
-        <!-- Sub-nav: Green (#0F0) if it's the current project, else White (#FFF) -->
-        {% if active_category == cat_slug %}
-        <ul class="sub-nav" style="list-style: none; padding: 0; margin-top: 10px;">
-            {% for p in cat_info.projects %}
-            <li style="margin-bottom: 8px;">
-                <a href="{{ url_for('project_page', category=cat_slug, project_name=p.slug) }}"
-                   style="text-decoration:none; {% if name == p.slug %}color: #0F0;{% else %}color: #FFF;{% endif %} transition: color 0.3s;">
-                    {{ p.title }}
-                </a>
+        <ul class="nav-list" id="nav-list">
+            {% for cat_slug, cat_info in nav.items() %}
+            <li class="nav-item {% if active_category == cat_slug %}active{% endif %}">
+                <a href="#" class="cat-link">{{ cat_info.display_name }} ▾</a>
+                
+                <ul class="dropdown">
+                    {% for p in cat_info.projects %}
+                    <li>
+                        <a href="{{ url_for('project_page', category=cat_slug, project_name=p.slug) }}"
+                        class="{% if name == p.slug %}current-proj{% endif %}">
+                            {{ p.title }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
             </li>
             {% endfor %}
         </ul>
-        {% endif %}
-    </li>
-    {% endfor %}
-</ul>
-
     </nav>
-
-
-
+    <script>
+        function toggleMenu() {
+            var x = document.getElementById("nav-list");
+            x.classList.toggle("show");
+        }
+    </script>
     </header>
 
     <main>
