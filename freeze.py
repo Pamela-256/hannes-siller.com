@@ -1,41 +1,25 @@
 import os
-import webbrowser
-import http.server
-import socketserver
-from threading import Thread
 from flask_frozen import Freezer
-from app import app
+from app import app  # Import your app object from app.py
 
+# 1. Initialize the freezer
 freezer = Freezer(app)
-BUILD_DIR = 'build'
-PORT = 8000
 
-def serve_forever():
-    """Starts a local server in the build directory."""
-    os.chdir(BUILD_DIR)
-    handler = http.server.SimpleHTTPRequestHandler
-    with socketserver.TCPServer(("", PORT), handler) as httpd:
-        print(f"Serving static site at http://localhost:{PORT}")
-        httpd.serve_forever()
+# 2. Place the URL generator HERE
+# It must be before the freezer.freeze() call
+@freezer.register_generator
+def project_page():
+    # This logic matches your new photography/cinematography structure
+    projects_dir = os.path.join('static', 'projects')
+    for cat in os.listdir(projects_dir):
+        cat_path = os.path.join(projects_dir, cat)
+        if os.path.isdir(cat_path):
+            for proj in os.listdir(cat_path):
+                if os.path.isdir(os.path.join(cat_path, proj)):
+                    # This tells Frozen-Flask to 'visit' these nested URLs
+                    yield {'category': cat, 'project_name': proj}
 
 if __name__ == '__main__':
-    # 1. Generate the static files
-    print("Freezing the site...")
+    # 3. Finally, execute the freeze
+    # This generates the 'build/' folder
     freezer.freeze()
-    
-    # 2. Start the server in a background thread
-    print("Starting preview server...")
-    Thread(target=serve_forever, daemon=True).start()
-    
-    # 3. Open the browser automatically
-    webbrowser.open(f"http://localhost:{PORT}")
-    
-    print("Previewing site. Press CTRL+C in this terminal to stop.")
-    
-    # Keep the main script running so the server stays alive
-    try:
-        import time
-        while True:
-            time.sleep(1)
-    except KeyboardInterrupt:
-        print("\nStopping preview server.")

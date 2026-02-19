@@ -1,15 +1,16 @@
-
 {% extends "layout.html" %}
 
 {% block content %}
-<h1>Project: {{ name }}</h1>
-<a href="{{ url_for('index') }}">Back Home</a>
-<div class="gallery">
-    {% for img in images %}
-    <a href="{{ url_for('static', filename='projects/' + name + '/' + img) }}">
-        <img src="{{ url_for('static', filename='projects/' + name + '/' + img) }}" alt="Photography">
-    </a>
-    {% endfor %}
-</div>
+    <h2>{{ display_title }}</h2>
+    <p>{{ description }}</p>
+    <a href="{{ url_for('index') }}">Back Home</a>
 
+    <div class="gallery">
+        {% for img in images %}
+        <!-- Note the path includes the 'category' variable now -->
+        <a href="{{ url_for('static', filename='projects/' + category + '/' + name + '/' + img) }}">
+            <img src="{{ url_for('static', filename='projects/' + category + '/' + name + '/' + img) }}" alt="Photography">
+        </a>
+        {% endfor %}
+    </div>
 {% endblock %}
