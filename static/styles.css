@@ -235,6 +235,20 @@ a:active { color: #0F0; }
         border-top: none;
         background: #282828;
     }
+
+    /* Center subnavigation in mobile mode */
+    @media (max-width: 768px) {
+        .dropdown {
+            text-align: center; /* Center the dropdown items */
+        }
+        
+        .dropdown li a {
+            display: inline-block; /* Allow centering to work */
+            width: auto; /* Reset width for proper centering */
+            margin: 5px 0; /* Add some spacing between items */
+            padding: 10px 20px; /* Maintain consistent padding */
+        }
+    }
 }
 
 
@@ -249,6 +263,8 @@ a:active { color: #0F0; }
     
     .nav-list.show {
         display: flex;
+        flex-direction: column; /* Ensure vertical layout */
+        align-items: center; /* Center items horizontally */
     }
     
     .dropdown {
