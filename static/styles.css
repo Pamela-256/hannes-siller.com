@@ -67,7 +67,7 @@ a:active { color: #0F0; }
     padding: 15px 20px;
     color: #FFF;
     opacity: 0.7;
-    font-weight: bold;
+    font-weight: 700; /* Explicitly set to bold (700) for consistency */
     text-transform: uppercase;
     cursor: pointer;
     white-space: nowrap; /* Prevent line breaks */
@@ -185,14 +185,17 @@ a:active { color: #0F0; }
 /* --- RESPONSIVE / MOBILE --- */
 .menu-toggle {
     display: none;
-    background: #0FF;
-    color: #000;
+    background: rgb(0, 0, 0);
+    color: #0FF; /* Changed to white to match main navigation */
+    opacity: 0.7; /* Added to match .cat-link style */
     border: none;
     padding: 10px 20px;
-    font-weight: bold;
+    font-weight: 700; /* Explicitly set to bold (700) for consistency */
     cursor: pointer;
     width: 100%;
     text-align: center;
+    text-transform: uppercase; /* Added to match .cat-link style */
+    font-size: 24px; /* Larger than navigation links (14px) */
 }
 
 @media (max-width: 900px) {
