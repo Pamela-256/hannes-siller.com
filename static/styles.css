@@ -190,7 +190,7 @@ a:active { color: #0F0; }
     font-weight: bold;
     cursor: pointer;
     width: 100%;
-    text-align: left;
+    text-align: center;
 }
 
 @media (max-width: 900px) {
