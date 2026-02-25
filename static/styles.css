@@ -136,7 +136,7 @@ a:active { color: #0F0; }
     display: block;
     position: absolute;
     overflow: hidden;
-    cursor: zoom-in;
+    cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-radius: 4px;
 }
