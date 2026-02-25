@@ -7,8 +7,14 @@
 
     <div class="gallery">
     {% for img in images %}
-        <a href="{{ url_for('static', filename='projects/' + category + '/' + name + '/' + img) }}">
-            <img src="{{ url_for('static', filename='projects/' + category + '/' + name + '/' + img) }}" 
+        {% if name %}
+        <a href="{{ url_for('static', filename='projects/' + category + '/' + name + '/' + img) }}" 
+           data-fslightbox="gallery">
+        {% else %}
+        <a href="{{ url_for('static', filename='projects/' + category + '/' + img) }}" 
+           data-fslightbox="gallery">
+        {% endif %}
+            <img src="{% if name %}{{ url_for('static', filename='projects/' + category + '/' + name + '/' + img) }}{% else %}{{ url_for('static', filename='projects/' + category + '/' + img) }}{% endif %}" 
                 alt="{{ display_title }}">
         </a>
     {% endfor %}

@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hannes Siller | Photography</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <!-- Lightbox CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.12.0/baguetteBox.css">
+    <!-- FSLightbox CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fslightbox@3.4.1/index.min.css">
 </head>
 <body>
     <header>
@@ -58,7 +58,7 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.12.0/baguetteBox.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fslightbox@3.4.1/index.min.js"></script>
 
     <script>
         // 1. Toggle Sub-Menus on Click (Software Style)
@@ -90,15 +90,8 @@
             document.getElementById("nav-list").classList.toggle("show");
         }
 
-        // 4. Initialize Lightbox
-        window.addEventListener('load', function() {
-            baguetteBox.run('.gallery', {
-                animation: 'fadeIn',
-                overlayBackgroundColor: 'rgba(0,0,0,0.95)',
-                noScrollbars: true,
-                buttons: true
-            });
-        });
+        // 4. FSLightbox is automatically initialized via data-fslightbox attributes
+        // No additional JavaScript needed - it handles everything automatically
     </script>
 </body>
 </html>

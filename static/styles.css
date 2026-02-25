@@ -122,6 +122,7 @@ a:active { color: #0F0; }
     display: inline-block;
     margin-bottom: 15px;
     width: 100%;
+    cursor: zoom-in;
 }
 
 .gallery img {
@@ -134,6 +135,29 @@ a:active { color: #0F0; }
 
 .gallery img:hover {
     transform: scale(1.02);
+}
+
+/* --- FSLightbox Custom Styling --- */
+/* Ensure lightbox matches our dark theme */
+.fslightbox-container {
+    background-color: rgba(0, 0, 0, 0.95);
+}
+
+.fslightbox-toolbar-button {
+    color: white !important;
+}
+
+.fslightbox-toolbar-button:hover {
+    color: #0FF !important;
+}
+
+.fslightbox-slider {
+    background-color: transparent;
+}
+
+/* Fullscreen button styling */
+.fslightbox-fullscreen-button {
+    font-size: 20px !important;
 }
 
 /* --- RESPONSIVE / MOBILE --- */
