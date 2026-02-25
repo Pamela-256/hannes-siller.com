@@ -44,16 +44,16 @@ a:active { color: #0F0; }
     border-bottom: 1px solid #333;
     position: relative;
     z-index: 1000;
-    text-align: center; /* Center text */
+    text-align: left; /* Left align by default */
 }
 
 .nav-list {
     display: flex;
-    justify-content: center; /* Center items horizontally */
+    justify-content: flex-start; /* Left align items */
     list-style: none;
-    margin: 0 auto; /* Center block element */
+    margin: 0;
     padding: 0;
-    width: 100%; /* Allow full width centering */
+    width: auto; /* Auto width for left alignment */
 }
 
 .nav-item {
@@ -196,6 +196,48 @@ a:active { color: #0F0; }
 @media (max-width: 900px) {
     .gallery { column-count: 2; }
 }
+
+/* Default state: Center top-level navigation, left-align sub-navigation */
+.main-nav {
+    text-align: center; /* Always center top-level items by default */
+}
+
+.nav-list {
+    justify-content: center; /* Center top-level items */
+    width: auto;
+}
+
+/* Responsive navigation - switch to dropdown when space is limited */
+@media (max-width: 1200px) {
+    /* Show menu toggle button at this breakpoint */
+    .menu-toggle { display: block; }
+    
+    /* Hide nav list by default, show when menu is toggled */
+    .nav-list {
+        display: none;
+        flex-direction: column;
+    }
+    
+    .nav-list.show {
+        display: flex;
+        flex-wrap: wrap; /* Allow wrapping to multiple lines */
+        justify-content: center;
+    }
+    
+
+    
+    /* Make dropdowns full width on small screens */
+    .dropdown {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+        border-left: 3px solid #0FF;
+        border-top: none;
+        background: #282828;
+    }
+}
+
+
 
 @media (max-width: 768px) {
     .menu-toggle { display: block; }

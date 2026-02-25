@@ -85,9 +85,12 @@
             }
         }
 
-        // 3. Mobile Hamburger Toggle
+        // 3. Mobile Hamburger Toggle - works for both mobile and limited width screens
         function toggleMobileMenu() {
-            document.getElementById("nav-list").classList.toggle("show");
+            const navList = document.getElementById("nav-list");
+            if (navList) {
+                navList.classList.toggle("show");
+            }
         }
 
         // 4. FSLightbox is automatically initialized via data-fslightbox attributes
