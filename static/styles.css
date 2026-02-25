@@ -226,6 +226,11 @@ a:active { color: #0F0; }
         justify-content: center;
     }
     
+    /* Reduce padding for mobile navigation items */
+    .cat-link {
+        padding: 7.5px 20px; /* Reduced vertical padding by 50% */
+    }
+    
 
     
     /* Make dropdowns full width on small screens */
@@ -247,7 +252,7 @@ a:active { color: #0F0; }
         .dropdown li a {
             display: inline-block; /* Allow centering to work */
             width: auto; /* Reset width for proper centering */
-            margin: 5px 0; /* Add some spacing between items */
+            margin: 3px 0; /* Reduced spacing between items (50% of original) */
             padding: 10px 20px; /* Maintain consistent padding */
         }
     }
@@ -267,6 +272,11 @@ a:active { color: #0F0; }
         display: flex;
         flex-direction: column; /* Ensure vertical layout */
         align-items: center; /* Center items horizontally */
+    }
+    
+    /* Reduce padding for mobile navigation items */
+    .cat-link {
+        padding: 7.5px 20px; /* Reduced vertical padding by 50% */
     }
     
     .dropdown {
