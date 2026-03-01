@@ -120,8 +120,24 @@ def project_page(category, project_name):
     if not cat_data:
         return "Category not found", 404
 
-    # CASE 1: No project_name or Category has no sub-projects -> Show direct images
+    # CASE 1: No project_name or Category has no sub-projects
     if not project_name or not cat_data['projects']:
+        # Check for custom index.html in category folder
+        custom_html_path = os.path.join(PROJECTS_DIR, category, 'index.html')
+        if os.path.exists(custom_html_path):
+            # Read the custom HTML content
+            with open(custom_html_path, 'r', encoding='utf-8') as f:
+                custom_content = f.read()
+            
+            # Render with layout template
+            return render_template('custom_page.html',
+                                   nav=nav_data,
+                                   category=category,
+                                   active_category=category,
+                                   display_title=cat_data['display_name'],
+                                   custom_content=custom_content)
+        
+        # Default behavior: show direct images
         return render_template('project.html', 
                                nav=nav_data, 
                                category=category,
