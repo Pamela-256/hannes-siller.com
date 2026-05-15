@@ -5,7 +5,8 @@
         "Film",
         "Motion",
         "Art",
-        "Impressum"
+        "Impressum",
+        "Game"
     ],
     "description": "Main Portfolio Structure"
 }
