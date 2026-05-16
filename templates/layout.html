@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hannes Siller | Photography</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <!-- Lightbox CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.12.0/baguetteBox.css">
+    <!-- FSLightbox CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fslightbox@3.4.1/index.min.css">
 </head>
 <body>
     <header>
@@ -58,34 +58,43 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.12.0/baguetteBox.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fslightbox@3.4.1/index.min.js"></script>
 
     <script>
-    window.addEventListener('load', function() {
-        baguetteBox.run('.gallery', {
-            animation: 'fadeIn',
-            overlayBackgroundColor: 'rgba(0,0,0,0.98)',
-            buttons: true
-        });
-
-        const overlay = document.getElementById('baguetteBox-overlay');
-        if (overlay && !document.getElementById('custom-fs-button')) {
-            const fsBtn = document.createElement('button');
-            fsBtn.id = 'custom-fs-button';
-            // Using a simple square-in-bracket icon for a "software" look
-            fsBtn.innerHTML = '⛶'; 
-            overlay.appendChild(fsBtn);
-
-            fsBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                if (!document.fullscreenElement) {
-                    document.documentElement.requestFullscreen();
-                } else {
-                    document.exitFullscreen();
-                }
-            });
+        // 1. Toggle Sub-Menus on Click (Software Style)
+        function toggleDropdown(event, element) {
+            event.stopPropagation();
+            const parent = element.parentElement;
+            const isOpen = parent.classList.contains('open');
+            
+            // Close all other open menus
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('open'));
+            
+            // Toggle current
+            if (!isOpen) {
+                parent.classList.add('open');
+            }
         }
-    });
-</script>
+
+        // 2. Global Click Listener to close menus when clicking outside
+        window.onclick = function(event) {
+            if (!event.target.matches('.cat-link')) {
+                document.querySelectorAll('.nav-item').forEach(item => {
+                    item.classList.remove('open');
+                });
+            }
+        }
+
+        // 3. Mobile Hamburger Toggle - works for both mobile and limited width screens
+        function toggleMobileMenu() {
+            const navList = document.getElementById("nav-list");
+            if (navList) {
+                navList.classList.toggle("show");
+            }
+        }
+
+        // 4. FSLightbox is automatically initialized via data-fslightbox attributes
+        // No additional JavaScript needed - it handles everything automatically
+    </script>
 </body>
 </html>
