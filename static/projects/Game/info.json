@@ -2,6 +2,7 @@
     "title": "Game",
     "description": "",
     "project_order": [
-        "comet-invaders"
+        "comet-invaders",
+        "The Caveman Hunt"
     ]
 }

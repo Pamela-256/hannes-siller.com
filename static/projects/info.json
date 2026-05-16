@@ -1,12 +1,12 @@
 {
     "category_order": [
         "Hannes-Siller",
+        "Game",
         "Photo",
         "Film",
         "Motion",
         "Art",
-        "Impressum",
-        "Game"
+        "Impressum"
     ],
     "description": "Main Portfolio Structure"
 }

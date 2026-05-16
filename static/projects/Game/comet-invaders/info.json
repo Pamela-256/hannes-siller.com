@@ -1,5 +1,7 @@
 {
     "title": "Comet Invaders",
     "description": "",
-    "order": []
+    "order": [
+        "comet-invaders.png"
+    ]
 }
