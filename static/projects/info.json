@@ -8,5 +8,6 @@
         "Art",
         "Impressum"
     ],
-    "description": "Main Portfolio Structure"
+    "description": "Main Portfolio",
+    "default": "Hannes-Siller"
 }

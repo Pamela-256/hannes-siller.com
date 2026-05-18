@@ -1,6 +1,6 @@
 import os
 import json
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for
 
 app = Flask(__name__)
 # Absolute path to prevent Windows pathing issues
@@ -19,7 +19,7 @@ def get_portfolio_data():
                                if os.path.isdir(os.path.join(PROJECTS_DIR, d))])
     
     if not os.path.exists(master_json_path):
-        m_data = {"category_order": all_cats_on_disk, "description": "Main Portfolio"}
+        m_data = {"category_order": all_cats_on_disk, "description": "Main Portfolio", "default": ""}
         with open(master_json_path, 'w', encoding='utf-8') as f:
             json.dump(m_data, f, indent=4)
     
@@ -102,13 +102,23 @@ def get_portfolio_data():
             'projects': project_details,
             'direct_images': direct_images
         }
+    # Expose master-level metadata (e.g. default project) to templates
+    structure['_master'] = m_data
     return structure
 
 @app.route('/')
 def index():
     nav_data = get_portfolio_data()
-    # If a "home" category exists, you could redirect there, 
-    # but for now, we'll just render the index template.
+    # Check master JSON for a default path like "Category" or "Category/Project"
+    master = nav_data.get('_master', {})
+    default_path = (master or {}).get('default')
+    if default_path:
+        parts = default_path.strip('/').split('/')
+        if len(parts) == 1 and parts[0]:
+            return redirect(url_for('project_page', category=parts[0]))
+        elif len(parts) >= 2:
+            return redirect(url_for('project_page', category=parts[0], project_name=parts[1]))
+
     return render_template('index.html', nav=nav_data, active_category=None)
 
 @app.route('/<category>/', defaults={'project_name': None})
