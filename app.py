@@ -159,8 +159,22 @@ def project_page(category, project_name):
 
     # CASE 2: Standard Project folder
     project_path = os.path.join(PROJECTS_DIR, category, project_name)
+    # Prefer a custom project-level index.html if present
+    custom_proj_html = os.path.join(project_path, 'index.html')
+    if os.path.exists(custom_proj_html):
+        with open(custom_proj_html, 'r', encoding='utf-8') as f:
+            custom_content = f.read()
+
+        return render_template('custom_page.html',
+                               nav=nav_data,
+                               category=category,
+                               active_category=category,
+                               name=project_name,
+                               display_title=project_name.replace('-', ' ').title(),
+                               custom_content=custom_content)
+
     json_path = os.path.join(project_path, 'info.json')
-    
+
     with open(json_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
