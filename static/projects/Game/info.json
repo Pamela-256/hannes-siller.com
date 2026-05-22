@@ -2,7 +2,9 @@
     "title": "Game",
     "description": "",
     "project_order": [
-        "comet-invaders",
-        "The-Caveman-Hunt"
+        "The-Caveman-Hunt",
+        "Apes-of-Space",
+        "Booze-Blitz",
+        "Comet-Invaders"
     ]
 }
