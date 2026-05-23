@@ -3,8 +3,9 @@
     "description": "",
     "project_order": [
         "The-Caveman-Hunt",
-        "Apes-of-Space",
         "Booze-Blitz",
-        "Comet-Invaders"
+        "Comet-Invaders",
+        "Apes-of-Space",
+        "Unreal-Bootcamp"
     ]
 }

@@ -1,5 +1,10 @@
 {
     "title": "Apes Of Space",
-    "description": "",
-    "order": []
+    "description": "Some screenshots of a VR Prototype wich is currently in development. It is developtd in Unreal Engine 5 the target plattform is quest 3 standalone, the environment is created with blender and substance painter. The idea ist that the player has to solve puzzles in a old abandoned space station.",
+    "order": [
+        "2024-08-02 10_38_16-ApesOfSpace Preview [NetMode_ Standalone 0]  (64-bit_PC D3D SM6).jpg",
+        "2024-08-02 10_38_45-ApesOfSpace Preview [NetMode_ Standalone 0]  (64-bit_PC D3D SM6).jpg",
+        "2024-08-02 10_39_12-ApesOfSpace Preview [NetMode_ Standalone 0]  (64-bit_PC D3D SM6).jpg",
+        "2024-08-02 10_39_43-ApesOfSpace Preview [NetMode_ Standalone 0]  (64-bit_PC D3D SM6).jpg"
+    ]
 }
