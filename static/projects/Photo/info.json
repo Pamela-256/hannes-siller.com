@@ -2,11 +2,11 @@
     "title": "Photo",
     "description": "Explore our Photography work.",
     "project_order": [
-        "Galeri-Hoffmann",
         "Art-Fairs",
         "Nordic-Game",
         "ADAC",
         "Norway",
-        "Luminale"
+        "Luminale",
+        "Galerie-Hoffmann"
     ]
 }
