@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hannes Siller | Selected Projects</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <!-- FSLightbox CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fslightbox@3.4.1/index.min.css">
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <!-- Mobile Menu Toggle -->
+            <button class="menu-toggle" onclick="toggleMobileMenu()">MENU</button>
+            
+            <ul class="nav-list" id="nav-list">
+                
+                <li class="nav-item">
+                    
+                    
+                        
+                        <a href="/Hannes-Siller/" 
+                           class="cat-link ">
+                            Hannes Siller
+                        </a>
+                    
+                </li>
+                
+                <li class="nav-item">
+                    
+                    
+                        <a href="javascript:void(0)" 
+                           class="cat-link " 
+                           onclick="toggleDropdown(event, this)">
+                            Game
+                        </a>
+                        <ul class="dropdown">
+                            
+                            <li>
+                                <a href="/Game/The-Caveman-Hunt/"
+                                   class="">
+                                    The Caveman Hunt
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="/Game/Booze-Blitz/"
+                                   class="">
+                                    Booze Blitz
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="/Game/Comet-Invaders/"
+                                   class="">
+                                    Comet Invaders
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="/Game/Apes-of-Space/"
+                                   class="">
+                                    Apes Of Space
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="/Game/Unreal-Bootcamp/"
+                                   class="">
+                                    Unreal Bootcamp
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    
+                </li>
+                
+                <li class="nav-item">
+                    
+                    
+                        <a href="javascript:void(0)" 
+                           class="cat-link " 
+                           onclick="toggleDropdown(event, this)">
+                            Photo
+                        </a>
+                        <ul class="dropdown">
+                            
+                            <li>
+                                <a href="/Photo/Galeri-Hoffmann/"
+                                   class="">
+                                    Gallerie Hoffmann
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="/Photo/Art-Fairs/"
+                                   class="">
+                                    Art Fairs
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="/Photo/Nordic-Game/"
+                                   class="">
+                                    Nordic Game
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="/Photo/ADAC/"
+                                   class="">
+                                    Adac
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="/Photo/Norway/"
+                                   class="">
+                                    Norway
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="/Photo/Luminale/"
+                                   class="">
+                                    Luminale
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    
+                </li>
+                
+                <li class="nav-item">
+                    
+                    
+                        <a href="javascript:void(0)" 
+                           class="cat-link " 
+                           onclick="toggleDropdown(event, this)">
+                            Film
+                        </a>
+                        <ul class="dropdown">
+                            
+                            <li>
+                                <a href="/Film/Norway/"
+                                   class="">
+                                    Norway
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="/Film/Sweden/"
+                                   class="">
+                                    Sweden
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    
+                </li>
+                
+                <li class="nav-item">
+                    
+                    
+                        <a href="javascript:void(0)" 
+                           class="cat-link active-cat" 
+                           onclick="toggleDropdown(event, this)">
+                            Motion Design
+                        </a>
+                        <ul class="dropdown">
+                            
+                            <li>
+                                <a href="/Motion-Design/Showreel/"
+                                   class="">
+                                    Showreel
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="/Motion-Design/GWA/"
+                                   class="">
+                                    Gwa
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="/Motion-Design/Muesli/"
+                                   class="">
+                                    Muesli
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="/Motion-Design/To-Much-Workout/"
+                                   class="current-proj">
+                                    To Much Workout
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    
+                </li>
+                
+                <li class="nav-item">
+                    
+                    
+                        <a href="javascript:void(0)" 
+                           class="cat-link " 
+                           onclick="toggleDropdown(event, this)">
+                            Art
+                        </a>
+                        <ul class="dropdown">
+                            
+                            <li>
+                                <a href="/Art/Robodraw/"
+                                   class="">
+                                    Robodraw
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="/Art/Robodraw-Exhibition/"
+                                   class="">
+                                    Robodraw Exhibition
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    
+                </li>
+                
+                <li class="nav-item">
+                    
+                    
+                        
+                        <a href="/Impressum/" 
+                           class="cat-link ">
+                            Impressum
+                        </a>
+                    
+                </li>
+                
+                <li class="nav-item">
+                    
+                    
+                        
+                        <a href="/_master/" 
+                           class="cat-link ">
+                            
+                        </a>
+                    
+                </li>
+                
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div id="layout">
+            
+    <h2>To Much Workout</h2>
+    This animation was created for the the exhibition "Workout" which was the moment I joined the art collective: <a href="http://projektraumsechseins.de/" target="_blank">Projektraum 61</a>. We had a art exhibition called "Werkwoche" where we worked together for one week and exhibited the results at the end of the week in a gallery in an old barn owned and operated by <!DOCTYPE html><a href="https://www.wetterausicht.de/" target="_blank">wetterausicht.de</a> (A non-profit art and cultural association where I was happy to volunteer for many years.) We are still doing this one week art event year since 2016 (for nine years now).
+<br />
+<br />
+
+<br />
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/QdnYyU4h4S0?si=Dl_LLY_jN01xoTjd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+        </div>
+    </main>
+
+    <footer>
+        <p style="text-align: center">&copy; 2026 Hannes Siller</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/fslightbox@3.4.1/index.min.js"></script>
+
+    <script>
+        // 1. Toggle Sub-Menus on Click (Software Style)
+        function toggleDropdown(event, element) {
+            event.stopPropagation();
+            const parent = element.parentElement;
+            const isOpen = parent.classList.contains('open');
+            
+            // Close all other open menus
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('open'));
+            
+            // Toggle current
+            if (!isOpen) {
+                parent.classList.add('open');
+            }
+        }
+
+        // 2. Global Click Listener to close menus when clicking outside
+        window.onclick = function(event) {
+            if (!event.target.matches('.cat-link')) {
+                document.querySelectorAll('.nav-item').forEach(item => {
+                    item.classList.remove('open');
+                });
+            }
+        }
+
+        // 3. Mobile Hamburger Toggle - works for both mobile and limited width screens
+        function toggleMobileMenu() {
+            const navList = document.getElementById("nav-list");
+            if (navList) {
+                navList.classList.toggle("show");
+            }
+        }
+
+        // 4. FSLightbox is automatically initialized via data-fslightbox attributes
+        // No additional JavaScript needed - it handles everything automatically
+    </script>
+</body>
+</html>

@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hannes Siller | Selected Projects</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <!-- FSLightbox CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fslightbox@3.4.1/index.min.css">
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <!-- Mobile Menu Toggle -->
+            <button class="menu-toggle" onclick="toggleMobileMenu()">MENU</button>
+            
+            <ul class="nav-list" id="nav-list">
+                
+                <li class="nav-item">
+                    
+                    
+                        
+                        <a href="/Hannes-Siller/" 
+                           class="cat-link ">
+                            Hannes Siller
+                        </a>
+                    
+                </li>
+                
+                <li class="nav-item">
+                    
+                    
+                        <a href="javascript:void(0)" 
+                           class="cat-link active-cat" 
+                           onclick="toggleDropdown(event, this)">
+                            Game
+                        </a>
+                        <ul class="dropdown">
+                            
+                            <li>
+                                <a href="/Game/The-Caveman-Hunt/"
+                                   class="">
+                                    The Caveman Hunt
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="/Game/Booze-Blitz/"
+                                   class="">
+                                    Booze Blitz
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="/Game/Comet-Invaders/"
+                                   class="">
+                                    Comet Invaders
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="/Game/Apes-of-Space/"
+                                   class="">
+                                    Apes Of Space
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="/Game/Unreal-Bootcamp/"
+                                   class="current-proj">
+                                    Unreal Bootcamp
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    
+                </li>
+                
+                <li class="nav-item">
+                    
+                    
+                        <a href="javascript:void(0)" 
+                           class="cat-link " 
+                           onclick="toggleDropdown(event, this)">
+                            Photo
+                        </a>
+                        <ul class="dropdown">
+                            
+                            <li>
+                                <a href="/Photo/Galeri-Hoffmann/"
+                                   class="">
+                                    Gallerie Hoffmann
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="/Photo/Art-Fairs/"
+                                   class="">
+                                    Art Fairs
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="/Photo/Nordic-Game/"
+                                   class="">
+                                    Nordic Game
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="/Photo/ADAC/"
+                                   class="">
+                                    Adac
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="/Photo/Norway/"
+                                   class="">
+                                    Norway
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="/Photo/Luminale/"
+                                   class="">
+                                    Luminale
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    
+                </li>
+                
+                <li class="nav-item">
+                    
+                    
+                        <a href="javascript:void(0)" 
+                           class="cat-link " 
+                           onclick="toggleDropdown(event, this)">
+                            Film
+                        </a>
+                        <ul class="dropdown">
+                            
+                            <li>
+                                <a href="/Film/Norway/"
+                                   class="">
+                                    Norway
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="/Film/Sweden/"
+                                   class="">
+                                    Sweden
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    
+                </li>
+                
+                <li class="nav-item">
+                    
+                    
+                        <a href="javascript:void(0)" 
+                           class="cat-link " 
+                           onclick="toggleDropdown(event, this)">
+                            Motion Design
+                        </a>
+                        <ul class="dropdown">
+                            
+                            <li>
+                                <a href="/Motion-Design/Showreel/"
+                                   class="">
+                                    Showreel
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="/Motion-Design/GWA/"
+                                   class="">
+                                    Gwa
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="/Motion-Design/Muesli/"
+                                   class="">
+                                    Muesli
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="/Motion-Design/To-Much-Workout/"
+                                   class="">
+                                    To Much Workout
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    
+                </li>
+                
+                <li class="nav-item">
+                    
+                    
+                        <a href="javascript:void(0)" 
+                           class="cat-link " 
+                           onclick="toggleDropdown(event, this)">
+                            Art
+                        </a>
+                        <ul class="dropdown">
+                            
+                            <li>
+                                <a href="/Art/Robodraw/"
+                                   class="">
+                                    Robodraw
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="/Art/Robodraw-Exhibition/"
+                                   class="">
+                                    Robodraw Exhibition
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    
+                </li>
+                
+                <li class="nav-item">
+                    
+                    
+                        
+                        <a href="/Impressum/" 
+                           class="cat-link ">
+                            Impressum
+                        </a>
+                    
+                </li>
+                
+                <li class="nav-item">
+                    
+                    
+                        
+                        <a href="/_master/" 
+                           class="cat-link ">
+                            
+                        </a>
+                    
+                </li>
+                
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div id="layout">
+            
+    <h2>Unreal Bootcamp</h2>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/DW0sRcUFcfY?si=jcTes59diCOcr4NY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<br />
+<br />
+<br />
+The <a href="https://www.unrealengine.com/blog/epic-bootcamp-2023-animation-applications-open-now-for-european-and-middle-eastern-artists" target="_blank"> Epic Bootcamp Animation 2023 </a>was a intensive four week course initiated by Epic Games. It was hosted by <a href="https://www.ut-hub.com" target="_blank">UT-Hub</a>, instructors form <a href="https://incas-training.de/" target="_blank">INCAS Training</a> and other Epic training partners. Hundreds of people participated worldwide. The focus was on animated films using Unreal Engine 5. It was very inspiring to meat a lot of interesting people (via a discord server) from a lot of different industries starting to use a Game Engine for a lot of different new purposes. <br />
+<br />  
+I supported my girlfriend who was working in Fortaleza at the time, so I had to move to Brazil for three month just before the course started. Because of this situation I had to get up at 3 am to attend the live sessions (because of the time zone difference). So for me it was a little bit intense but I was very happy to be still  able to participate. I also got a chance to learn some kiteboarding on the beautiful beaches and in the perfect wind conditions of Cumbuco which was welcome contrast to all the screen time.<br />
+<br />
+<img src="/static/projects/Game/Unreal-Bootcamp/kiteboarding_fortaleza_01.jpg" width="400">
+<img src="/static/projects/Game/Unreal-Bootcamp/kiteboarding_fortaleza_02.jpg" width="400">
+<br />
+<br />
+I used assets for the main character and the environment from <a href="https://www.fab.com/" target="_blank">fab.com</a>. Special Thanks to Tom Baumann who was so kind to host a little motion capturing session in his <a href="https://www.quantum-stage.com/" target="_blank">studio in switzerland</a>. It was amazing to be able to direct a short motion capturing recording (via video call) with the great acting of <a href="https://www.instagram.com/nofear_ophir_/" target="_blank">Ophir Raray</a>. <br />
+<br />
+<img src="/static/projects/Game/Unreal-Bootcamp/2023-07-31 12_22_22-Zoom-Meeting.jpg" width="800" alt="Zoom Meeting"><br />
+<br />
+<img src="/static/projects/Game/Unreal-Bootcamp/2023-07-31 10_50_56-Zoom-Meeting2.jpg" width="800" alt="Zoom Meeting"><br />
+<br />
+I wrote a concept with a plot and a moodboard. You can also see some photos of the storryboard from my scetchbook.
+<br />
+<br />
+  <div class="gallery justified-gallery" data-gallery-container>
+
+
+       <a href="/static/projects/Game/Unreal-Bootcamp/Unreal-Bootcamp-2023_00.jpg" 
+           data-fslightbox="gallery" class="gallery-item">
+        
+            <img src="/static/projects/Game/Unreal-Bootcamp/Unreal-Bootcamp-2023_00.jpg" 
+                alt="Gallerie Hoffmann" class="gallery-img">
+        </a>
+
+       <a href="/static/projects/Game/Unreal-Bootcamp/Unreal-Bootcamp-2023_01.jpg" 
+           data-fslightbox="gallery" class="gallery-item">
+        
+            <img src="/static/projects/Game/Unreal-Bootcamp/Unreal-Bootcamp-2023_01.jpg" 
+                alt="Gallerie Hoffmann" class="gallery-img">
+        </a>
+       <a href="/static/projects/Game/Unreal-Bootcamp/Unreal-Bootcamp-2023_02.jpg" 
+           data-fslightbox="gallery" class="gallery-item">
+        
+            <img src="/static/projects/Game/Unreal-Bootcamp/Unreal-Bootcamp-2023_02.jpg" 
+                alt="Gallerie Hoffmann" class="gallery-img">
+        </a>
+       <a href="/static/projects/Game/Unreal-Bootcamp/Unreal-Bootcamp-2023_03.jpg" 
+           data-fslightbox="gallery" class="gallery-item">
+        
+            <img src="/static/projects/Game/Unreal-Bootcamp/Unreal-Bootcamp-2023_03.jpg" 
+                alt="Gallerie Hoffmann" class="gallery-img">
+        </a>
+       <a href="/static/projects/Game/Unreal-Bootcamp/Unreal-Bootcamp-2023_04.jpg" 
+           data-fslightbox="gallery" class="gallery-item">
+        
+            <img src="/static/projects/Game/Unreal-Bootcamp/Unreal-Bootcamp-2023_04.jpg" 
+                alt="Gallerie Hoffmann" class="gallery-img"> 
+        </a>
+         <a href="/static/projects/Game/Unreal-Bootcamp/Unreal-Bootcamp-2023_05.jpg" 
+              data-fslightbox="gallery" class="gallery-item">
+          
+                <img src="/static/projects/Game/Unreal-Bootcamp/Unreal-Bootcamp-2023_05.jpg" 
+                 alt="Gallerie Hoffmann" class="gallery-img">
+        </a>
+         <a href="/static/projects/Game/Unreal-Bootcamp/Unreal-Bootcamp-2023_06.jpg" 
+              data-fslightbox="gallery" class="gallery-item">
+          
+                <img src="/static/projects/Game/Unreal-Bootcamp/Unreal-Bootcamp-2023_06.jpg" 
+                 alt="Gallerie Hoffmann" class="gallery-img">
+        </a> 
+  </div>
+  <script>
+// Justified Image Grid Implementation
+class JustifiedGallery {
+    constructor(container) {
+        this.container = container;
+        this.items = Array.from(container.querySelectorAll('.gallery-item'));
+        this.gap = 15; // Gap between images
+        this.rowHeight = 200; // Target row height
+        this.currentY = 0; // Track vertical position
+        this.init();
+    }
+
+    init() {
+        if (this.items.length === 0) return;
+        
+        // Wait for images to load
+        const loadPromises = this.items.map(item => {
+            const img = item.querySelector('.gallery-img');
+            if (img.complete) return Promise.resolve();
+            return new Promise(resolve => {
+                img.addEventListener('load', resolve);
+                img.addEventListener('error', resolve); // Handle errors too
+            });
+        });
+
+        Promise.all(loadPromises).then(() => this.layout());
+        
+        // Re-layout on window resize
+        window.addEventListener('resize', () => this.debounceLayout());
+    }
+
+    debounceLayout() {
+        clearTimeout(this.resizeTimeout);
+        this.resizeTimeout = setTimeout(() => {
+            this.currentY = 0; // Reset vertical position
+            this.layout();
+        }, 100);
+    }
+
+    layout() {
+        const containerWidth = this.container.clientWidth;
+        let currentRow = [];
+        let currentRowAspectRatio = 0;
+        
+        // Reset all items
+        this.items.forEach(item => {
+            const img = item.querySelector('.gallery-img');
+            img.style.width = '';
+            img.style.height = '';
+            item.style.width = '';
+            item.style.height = '';
+            item.style.position = '';
+            item.style.top = '';
+            item.style.left = '';
+        });
+
+        // Group items into rows
+        for (let i = 0; i < this.items.length; i++) {
+            const item = this.items[i];
+            const img = item.querySelector('.gallery-img');
+            const aspectRatio = img.naturalWidth / img.naturalHeight;
+            
+            // Calculate what width this image would have at target row height
+            const targetWidth = this.rowHeight * aspectRatio;
+            
+            // If adding this image would exceed container width, finalize current row
+            if (currentRow.length > 0 && 
+                this.calculateRowWidth(currentRow) + targetWidth + (currentRow.length * this.gap) > containerWidth) {
+                this.layoutRow(currentRow, containerWidth);
+                currentRow = [];
+                currentRowAspectRatio = 0;
+            }
+            
+            currentRow.push({item, img, aspectRatio});
+            currentRowAspectRatio += aspectRatio;
+        }
+        
+        // Layout the last row
+        if (currentRow.length > 0) {
+            this.layoutRow(currentRow, containerWidth);
+        }
+        
+        // Set final container height
+        this.container.style.height = `${this.currentY}px`;
+    }
+
+    calculateRowWidth(rowItems) {
+        // Calculate what the total width would be at target row height
+        return rowItems.reduce((sum, {aspectRatio}) => sum + (this.rowHeight * aspectRatio), 0);
+    }
+
+    layoutRow(rowItems, containerWidth) {
+        // Calculate total aspect ratio for the row
+        const totalAspectRatio = rowItems.reduce((sum, item) => sum + item.aspectRatio, 0);
+        
+        // Calculate actual row height based on container width
+        const gaps = (rowItems.length - 1) * this.gap;
+        const actualRowHeight = (containerWidth - gaps) / totalAspectRatio;
+        
+        let currentX = 0;
+        
+        // Position each item in the row
+        rowItems.forEach(({item, img, aspectRatio}) => {
+            const itemWidth = actualRowHeight * aspectRatio;
+            
+            // Set dimensions
+            img.style.width = `${itemWidth}px`;
+            img.style.height = `${actualRowHeight}px`;
+            
+            item.style.width = `${itemWidth}px`;
+            item.style.height = `${actualRowHeight}px`;
+            item.style.position = 'absolute';
+            item.style.top = `${this.currentY}px`;
+            item.style.left = `${currentX}px`;
+            
+            currentX += itemWidth + this.gap;
+        });
+        
+        // Update vertical position for next row
+        this.currentY += actualRowHeight + this.gap;
+        
+        // Set container properties
+        this.container.style.position = 'relative';
+    }
+}
+
+// Initialize gallery when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    const galleries = document.querySelectorAll('[data-gallery-container]');
+    galleries.forEach(gallery => new JustifiedGallery(gallery));
+});
+</script>
+<br />
+<br />
+
+        </div>
+    </main>
+
+    <footer>
+        <p style="text-align: center">&copy; 2026 Hannes Siller</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/fslightbox@3.4.1/index.min.js"></script>
+
+    <script>
+        // 1. Toggle Sub-Menus on Click (Software Style)
+        function toggleDropdown(event, element) {
+            event.stopPropagation();
+            const parent = element.parentElement;
+            const isOpen = parent.classList.contains('open');
+            
+            // Close all other open menus
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('open'));
+            
+            // Toggle current
+            if (!isOpen) {
+                parent.classList.add('open');
+            }
+        }
+
+        // 2. Global Click Listener to close menus when clicking outside
+        window.onclick = function(event) {
+            if (!event.target.matches('.cat-link')) {
+                document.querySelectorAll('.nav-item').forEach(item => {
+                    item.classList.remove('open');
+                });
+            }
+        }
+
+        // 3. Mobile Hamburger Toggle - works for both mobile and limited width screens
+        function toggleMobileMenu() {
+            const navList = document.getElementById("nav-list");
+            if (navList) {
+                navList.classList.toggle("show");
+            }
+        }
+
+        // 4. FSLightbox is automatically initialized via data-fslightbox attributes
+        // No additional JavaScript needed - it handles everything automatically
+    </script>
+</body>
+</html>
