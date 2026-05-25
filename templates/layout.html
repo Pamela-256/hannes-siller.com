@@ -15,7 +15,7 @@
             <button class="menu-toggle" onclick="toggleMobileMenu()">MENU</button>
             
             <ul class="nav-list" id="nav-list">
-                {% for cat_slug, cat_info in nav.items() %}
+                {% for cat_slug, cat_info in nav.items() if not cat_slug.startswith('_') %}
                 <li class="nav-item">
                     {# 1. Logic: If projects exist, act as a dropdown toggle. If not, link directly. #}
                     {% if cat_info.projects %}

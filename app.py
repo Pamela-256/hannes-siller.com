@@ -102,15 +102,16 @@ def get_portfolio_data():
             'projects': project_details,
             'direct_images': direct_images
         }
-    # Expose master-level metadata (e.g. default project) to templates
-    structure['_master'] = m_data
+    # Expose master-level metadata (e.g. default project) under a non-conflicting key
+    structure['__master__'] = m_data
     return structure
 
 @app.route('/')
 def index():
     nav_data = get_portfolio_data()
     # Check master JSON for a default path like "Category" or "Category/Project"
-    master = nav_data.get('_master', {})
+    # Store master data under a non-conflicting key so it doesn't act as a category
+    master = nav_data.get('__master__', {})
     default_path = (master or {}).get('default')
     if default_path:
         parts = default_path.strip('/').split('/')
